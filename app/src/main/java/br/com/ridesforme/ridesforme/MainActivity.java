@@ -18,12 +18,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btn_telaLogin = (Button)findViewById(R.id.button2);
+            Button btn_telaLogin = (Button)findViewById(R.id.button);
 
-        btn_telaLogin.setOnClickListener(new View.OnClickListener() {
+        btn_telaLogin.setOnClickListener(new Button.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                //Intent or Toast
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "hehe", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(i);
+                
             }
         });
 
