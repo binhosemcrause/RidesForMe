@@ -1,6 +1,8 @@
 package br.com.ridesforme.ridesforme;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,36 +10,93 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.MultipartBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
-import java.io.IOException;
+
+//Fonte:
+//http://androidexample.com/Android_Session_Management_Using_SharedPreferences_-_Android_Example/index.php?view=article_discription&aid=127&aaid=147
 
 public class LoginActivity extends AppCompatActivity {
     OkHttpClient client = new OkHttpClient();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         Button btnLogar = (Button)findViewById(R.id.button2);
+        final EditText txtUsername = (EditText) findViewById(R.id.editLogin);
+        final EditText txtPassword = (EditText) findViewById(R.id.editPassword);
+        final UserSessionManager session;
+        session = new UserSessionManager(getApplicationContext());
+
+        Toast.makeText(getApplicationContext(),
+                "User Login Status: " + session.isUserLoggedIn(),
+                Toast.LENGTH_LONG).show();
+
 
         btnLogar.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.w("Clicou","Clicou");
-                post();
+                String username = txtUsername.getText().toString();
+                String password = txtPassword.getText().toString();
+
+                if(username.trim().length() > 0 && password.trim().length() > 0){
+
+                    // For testing puspose username, password is checked with static data
+                    // username = admin
+                    // password = admin
+
+                    if(username.equals("admin") && password.equals("admin")){
+
+                        // Creating user login session
+                        // Statically storing name="Android Example"
+                        // and email="androidexample84@gmail.com"
+                        session.createUserLoginSession("Android Example",
+                                "androidexample84@gmail.com");
+
+                        // Starting MainActivity
+                        Intent i = new Intent(getApplicationContext(), TesteLoginActivity.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                        // Add new Flag to start new Activity
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(i);
+
+                        finish();
+
+                    }else{
+
+                        // username / password doesn't match&
+                        Toast.makeText(getApplicationContext(),
+                                "Username/Password is incorrect",
+                                Toast.LENGTH_LONG).show();
+
+                    }
+                }else{
+
+                    // user didn't entered username or password
+                    Toast.makeText(getApplicationContext(),
+                            "Please enter username and password",
+                            Toast.LENGTH_LONG).show();
+
+                }
+
+                Log.w("Clicou", "Clicou");
+                //post();
 
             }
         });
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
