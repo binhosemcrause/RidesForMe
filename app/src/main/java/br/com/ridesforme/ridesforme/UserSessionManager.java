@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import junit.framework.Test;
+
 public class UserSessionManager {
 
         SharedPreferences pref;
@@ -34,7 +36,7 @@ public class UserSessionManager {
 
         public boolean checkLogin(){
             if(!this.isUserLoggedIn()){
-                Intent i = new Intent(_context, LoginActivity.class);
+                Intent i = new Intent(_context, TesteLoginActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 _context.startActivity(i);

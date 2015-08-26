@@ -2,15 +2,35 @@ package br.com.ridesforme.ridesforme;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import java.util.HashMap;
+
+
+//implentar logica abaixo na tela inicial
 
 public class TesteLoginActivity extends AppCompatActivity {
+    UserSessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teste_login);
+
+        session = new UserSessionManager(getApplicationContext());
+
+        if(session.checkLogin())
+            finish();
+
+        HashMap<String,String> user = session.getUserDetails();
+
+        String name = user.get(UserSessionManager.KEY_NAME);
+
+        TextView txtLogin = (TextView)findViewById(R.id.lbllogin);
+        txtLogin.setText(Html.fromHtml("Name: <b>" + name + "</b>"));
     }
 
     @Override
