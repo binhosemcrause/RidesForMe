@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                         // Creating user login session
                         // Statically storing name="Android Example"
                         // and email="androidexample84@gmail.com"
-                        session.createUserLoginSession("Android Example",
+                        session.createUserLoginSession(username,
                                 "androidexample84@gmail.com");
 
                         // Starting MainActivity
