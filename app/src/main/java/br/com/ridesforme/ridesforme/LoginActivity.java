@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         final UserSessionManager session;
         session = new UserSessionManager(getApplicationContext());
 
+        //temporário (excluir depois)
         Toast.makeText(getApplicationContext(),
                 "User Login Status: " + session.isUserLoggedIn(),
                 Toast.LENGTH_LONG).show();
@@ -49,40 +50,23 @@ public class LoginActivity extends AppCompatActivity {
                 String password = txtPassword.getText().toString();
 
                 if(username.trim().length() > 0 && password.trim().length() > 0){
-
-                    // For testing puspose username, password is checked with static data
-                    // username = admin
-                    // password = admin
-
                     if(username.equals("admin") && password.equals("admin")){
-
-                        // Creating user login session
-                        // Statically storing name="Android Example"
-                        // and email="androidexample84@gmail.com"
                         session.createUserLoginSession(username,
                                 "androidexample84@gmail.com");
-
                         // Starting MainActivity
                         Intent i = new Intent(getApplicationContext(), TesteLoginActivity.class);
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
                         // Add new Flag to start new Activity
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
-
                         finish();
 
                     }else{
-
-                        // username / password doesn't match&
                         Toast.makeText(getApplicationContext(),
                                 "Username/Password is incorrect",
                                 Toast.LENGTH_LONG).show();
-
                     }
                 }else{
-
-                    // user didn't entered username or password
                     Toast.makeText(getApplicationContext(),
                             "Please enter username and password",
                             Toast.LENGTH_LONG).show();
