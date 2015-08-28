@@ -49,7 +49,11 @@ public class LoginActivity extends AppCompatActivity {
                 String username = txtUsername.getText().toString();
                 String password = txtPassword.getText().toString();
 
-                if(username.trim().length() > 0 && password.trim().length() > 0){
+               // String[] loginDados = {username,password};
+
+                new LoginControllerTask().execute(username,password);
+
+                /*if(username.trim().length() > 0 && password.trim().length() > 0){
                     if(username.equals("admin") && password.equals("admin")){
                         session.createUserLoginSession(username,
                                 "androidexample84@gmail.com");
@@ -73,8 +77,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
 
-                Log.w("Clicou", "Clicou");
-                //post();
+                Log.w("Clicou", "Clicou");*/
 
             }
         });
@@ -104,38 +107,5 @@ public class LoginActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void post() {
 
-        Thread thread = new Thread(new Runnable(){
-            @Override
-            public void run() {
-                try {
-                    OkHttpClient client = new OkHttpClient();
-                    RequestBody requestBody = new MultipartBuilder()
-                            .type(MultipartBuilder.FORM) //this is what I say in my POSTman (Chrome plugin)
-                            .addFormDataPart("login", "silvana")
-                            .addFormDataPart("senha", "silvana")
-                            .build();
-                    Request request = new Request.Builder()
-                            .url("http://192.168.25.34/rpg/usuario/cadastrarUsuario")
-                            .post(requestBody)
-                            .build();
-                    try {
-                        Response response = client.newCall(request).execute();
-                        String responseString = response.body().string();
-                        response.body().close();
-                        // do whatever you need to do with responseString
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        thread.start();
-
-
-    }
 }
