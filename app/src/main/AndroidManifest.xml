@@ -23,10 +23,6 @@
             android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name=".HomeActivity"
-            android:label="@string/title_activity_home" >
-        </activity>
-        <activity
             android:name=".TesteLoginActivity"
             android:label="@string/title_activity_teste_login" >
         </activity>
