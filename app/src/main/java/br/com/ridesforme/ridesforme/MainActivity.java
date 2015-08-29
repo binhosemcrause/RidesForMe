@@ -1,6 +1,7 @@
 package br.com.ridesforme.ridesforme;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,59 +16,48 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.HashMap;
 
 
 public class MainActivity extends Activity {
-    private long ms=0;
-    private long splashTime=5000;
+    private long ms = 0;
+    private long splashTime = 5000;
     private boolean splashActive = true;
-    private boolean paused=false;
+    private boolean paused = false;
 
-   // UserSessionManager session;
-
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Verificar se tem pref criada
-       /** session = new UserSessionManager(getApplicationContext());
-        if(session.checkLogin()){
-        }else {
-        }**/
-
-        Thread timerThread = new Thread(){
-                public void run(){
-                    try{
-                        while (splashActive && ms < splashTime){
-                            if (!paused){
-                                ms=ms+100;
-                                Thread.sleep(100);
-                            }
-
+        Thread timerThread = new Thread() {
+            public void run() {
+                try {
+                    while (splashActive && ms < splashTime) {
+                        if (!paused) {
+                            ms = ms + 100;
+                            Thread.sleep(100);
                         }
-                    }catch (InterruptedException e){
-                        e.printStackTrace();
-                    }finally {
-                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                        startActivity(intent);
                     }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
                 }
-            };
-            timerThread.start();
-        }
-
+            }
+        };
+        timerThread.start();
+    }
 
     @Override
     protected void onPause() {
         super.onPause();
         finish();
     }
-
-
-
 
 
 }

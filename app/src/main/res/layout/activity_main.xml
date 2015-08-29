@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:layout_marginTop="65dp"
-        android:background="@drawable/ic_drawer"
+        android:background="@mipmap/ic_launcher"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
 

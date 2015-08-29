@@ -22,14 +22,14 @@ public class TesteLoginActivity extends AppCompatActivity {
 
         session = new UserSessionManager(getApplicationContext());
 
-        if(session.checkLogin())
+        if (session.checkLogin())
             finish();
 
-        HashMap<String,String> user = session.getUserDetails();
+        HashMap<String, String> user = session.getUserDetails();
 
         String name = user.get(UserSessionManager.KEY_NAME);
 
-        TextView txtLogin = (TextView)findViewById(R.id.lbllogin);
+        TextView txtLogin = (TextView) findViewById(R.id.lbllogin);
         txtLogin.setText(Html.fromHtml("Name: <b>" + name + "</b>"));
     }
 

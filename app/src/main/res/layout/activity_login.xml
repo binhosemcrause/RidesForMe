@@ -54,5 +54,8 @@
         android:text="RidesForMe"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp" />
+        android:layout_marginTop="37dp"
+        android:id="@+id/textView2" />
+
+
 </RelativeLayout>
