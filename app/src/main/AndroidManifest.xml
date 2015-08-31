@@ -26,6 +26,14 @@
             android:name=".TesteLoginActivity"
             android:label="@string/title_activity_teste_login" >
         </activity>
+        <activity
+            android:name=".CadastroActivity"
+            android:label="@string/title_activity_cadastro"
+            android:parentActivityName=".LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.ridesforme.ridesforme.LoginActivity" />
+        </activity>
     </application>
 
 </manifest>

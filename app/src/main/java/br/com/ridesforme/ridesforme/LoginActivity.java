@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.okhttp.MultipartBuilder;
@@ -35,9 +37,23 @@ public class LoginActivity extends Activity {
         Button btnLogar = (Button) findViewById(R.id.button2);
         final EditText txtLogin = (EditText) findViewById(R.id.editLogin);
         final EditText txtPassword = (EditText) findViewById(R.id.editPassword);
+        TextView txtCadastrar = (TextView) findViewById(R.id.cadastrarLogin);
+        txtCadastrar.setText(Html.fromHtml("<p><u>Cadastre-se agora!</u></p>"));
         session = new UserSessionManager(getApplication());
 
-        btnLogar.setOnClickListener(new Button.OnClickListener() {
+        btnLogar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = txtLogin.getText().toString();
+                String password = txtPassword.getText().toString();
+                session.createUserLoginSession(username, password);
+                Intent intent = new Intent(getApplicationContext(), TesteLoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Com WebService
+        /*btnLogar.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String username = txtLogin.getText().toString();
@@ -59,6 +75,14 @@ public class LoginActivity extends Activity {
                 }
 
 
+            }
+        });
+*/
+        txtCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(LoginActivity.this, CadastroActivity.class);
+                startActivity(it);
             }
         });
 
