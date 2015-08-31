@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -30,8 +31,19 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        File f = new File("/data/data/"+getPackageName()+"/shared_prefs/AndroidExamplePref.xml");
 
+        /*SharedPreferences sf = getSharedPreferences("AndroidExamplePref", MODE_PRIVATE);
+        String chaveSalva = sf.getString("KEY_NAME", "");
+
+        if(chaveSalva != null && !chaveSalva.equals("")){
+            Toast.makeText(getApplicationContext(),chaveSalva,Toast.LENGTH_SHORT).show();
+            logado();
+        }else{
+            naoLogado();
+        }*/
+
+
+        File f = new File("/data/data/"+getPackageName()+"/shared_prefs/AndroidExamplePref.xml");
         if(f.exists()) {
             logado();
         }else {
@@ -45,7 +57,7 @@ public class MainActivity extends Activity {
         finish();
     }
 
-    public void logado(){
+    public void logado() {
         Thread timerThread = new Thread() {
             public void run() {
                 try {
@@ -66,7 +78,7 @@ public class MainActivity extends Activity {
         timerThread.start();
     }
 
-    public void naoLogado(){
+    public void naoLogado() {
         Thread timerThread = new Thread() {
             public void run() {
                 try {
