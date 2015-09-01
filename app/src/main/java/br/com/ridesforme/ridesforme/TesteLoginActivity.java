@@ -33,7 +33,7 @@ import java.util.HashMap;
 
 public class TesteLoginActivity extends AppCompatActivity implements OnMapReadyCallback,ConnectionCallbacks, OnConnectionFailedListener {
     UserSessionManager session;
-
+    private GoogleMap map;
     private static final String TAG = MainActivity.class.getSimpleName();
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
     private Location mLastLocation;
@@ -80,7 +80,7 @@ public class TesteLoginActivity extends AppCompatActivity implements OnMapReadyC
 
     }
 
-    private void displayLocation() {
+    private LatLng displayLocation() {
 
         mLastLocation = LocationServices.FusedLocationApi
                 .getLastLocation(mGoogleApiClient);
@@ -88,11 +88,12 @@ public class TesteLoginActivity extends AppCompatActivity implements OnMapReadyC
         if (mLastLocation != null) {
             double latitude = mLastLocation.getLatitude();
             double longitude = mLastLocation.getLongitude();
-
-            Log.v("latLog",String.valueOf(latitude));
+            LatLng lt = new LatLng(latitude,longitude);
+            return lt;
 
         } else {
         }
+        return null;
     }
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -146,7 +147,22 @@ public class TesteLoginActivity extends AppCompatActivity implements OnMapReadyC
     @Override
     public void onConnected(Bundle arg0) {
 
-        // Once connected with google api, get the location
+        map.getUiSettings().setZoomControlsEnabled(true);
+        map.getUiSettings().setCompassEnabled(true);
+        LatLng myLocation;
+
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+        if (mLastLocation != null) {
+            myLocation = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
+            Log.e("MyLocation",myLocation.toString());
+        }
+
+
+        LatLng recife = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
+        map.setMyLocationEnabled(true);
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(recife, 17));
+
         displayLocation();
     }
 
@@ -157,14 +173,8 @@ public class TesteLoginActivity extends AppCompatActivity implements OnMapReadyC
 
 
     @Override
-    public void onMapReady(GoogleMap map) {
-        map.getUiSettings().setZoomControlsEnabled(true);
-        map.getUiSettings().setCompassEnabled(true);
-
-        LatLng recife = new LatLng(-8.0484889,-34.9129189);
-
-        map.setMyLocationEnabled(true);
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(recife, 13));
+    public void onMapReady(GoogleMap map2) {
+        this.map = map2;
 
     }
 
