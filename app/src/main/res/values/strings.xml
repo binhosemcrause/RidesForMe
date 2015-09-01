@@ -16,4 +16,5 @@
     <string name="action_example">Example action</string>
     <string name="title_activity_teste_login">TesteLoginActivity</string>
     <string name="title_activity_cadastro">CadastroActivity</string>
+    <string name="title_activity_index">IndexActivity</string>
 </resources>
