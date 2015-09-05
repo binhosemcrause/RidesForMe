@@ -71,6 +71,7 @@ public class TesteLoginActivity extends AppCompatActivity implements OnMapReadyC
 
         TextView txtLogin = (TextView) findViewById(R.id.lbllogin);
         txtLogin.setText(Html.fromHtml("Name: <b>" + name + "</b>"));
+
         //GOOGLE MAPS
 
         MapFragment mapFragment = (MapFragment) getFragmentManager()
