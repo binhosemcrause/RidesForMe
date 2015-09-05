@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 //implentar logica abaixo na tela inicial
 
-public class MapHomeActivity extends AppCompatActivity implements OnMapReadyCallback,ConnectionCallbacks, OnConnectionFailedListener {
+public class MapHomeActivity extends AppCompatActivity implements OnMapReadyCallback, ConnectionCallbacks, OnConnectionFailedListener {
     UserSessionManager session;
     private GoogleMap map;
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -76,21 +76,6 @@ public class MapHomeActivity extends AppCompatActivity implements OnMapReadyCall
 
     }
 
-    private LatLng displayLocation() {
-
-        mLastLocation = LocationServices.FusedLocationApi
-                .getLastLocation(mGoogleApiClient);
-
-        if (mLastLocation != null) {
-            double latitude = mLastLocation.getLatitude();
-            double longitude = mLastLocation.getLongitude();
-            LatLng lt = new LatLng(latitude,longitude);
-            return lt;
-
-        } else {
-        }
-        return null;
-    }
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -146,20 +131,42 @@ public class MapHomeActivity extends AppCompatActivity implements OnMapReadyCall
         map.getUiSettings().setZoomControlsEnabled(true);
         map.getUiSettings().setCompassEnabled(true);
         LatLng myLocation;
+        HashMap<String, String> location = session.getLastLocation();
 
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
-        if (mLastLocation != null) {
-            myLocation = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
-            Log.e("MyLocation",myLocation.toString());
+
+        if (mLastLocation != null && location.get("lat") == null) {
+            myLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+            map.setMyLocationEnabled(true);
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 17));
+
+            session.createLastLocation(String.valueOf(mLastLocation.getLatitude()), String.valueOf(mLastLocation.getLongitude()));
+            Log.i("1", "LOCALIZACAO ENCONTRADA / SHARED PREFERENCES NULL");
+
+        } else if (mLastLocation != null && location.get("lat") != null) {
+            myLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+            map.setMyLocationEnabled(true);
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 17));
+
+            session.createLastLocation(String.valueOf(mLastLocation.getLatitude()), String.valueOf(mLastLocation.getLongitude()));
+            Log.i("1", "LOCALIZACAO ENCONTRADA / SHARED PREFERENCES PREENCHIDO");
+
+        } else if (mLastLocation == null && location.get("lat") != null) {
+            myLocation = new LatLng(Double.parseDouble(location.get("lat")), Double.parseDouble(location.get("lng")));
+            map.setMyLocationEnabled(true);
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 17));
+
+            Log.i("1", "LOCALIZACAO NÃO ENCONTRADA / SHARED PREFERENCES PREENCHIDO");
+
+        } else {
+            myLocation = new LatLng(-14.2392976, -53.1805017);
+            Toast.makeText(this, "Localização não encontrada", Toast.LENGTH_LONG).show();
+            map.setMyLocationEnabled(true);
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 2));
+
+            Log.i("1", "LOCALIZACAO NÃO ENCONTRADA / SHARED PREFERENCES NULL");
         }
-
-
-        LatLng recife = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
-        map.setMyLocationEnabled(true);
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(recife, 17));
-
-        displayLocation();
     }
 
     @Override

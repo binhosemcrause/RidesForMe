@@ -18,6 +18,8 @@ public class UserSessionManager {
     private static final String IS_USER_LOGIN = "IsUserLoggedIn";
     public static final String KEY_NAME = "name";
     public static final String KEY_SENHA = "senha";
+    public static final String KEY_LAT = "lat";
+    public static final String KEY_LNG = "lng";
 
     // Constructor
     public UserSessionManager(Context context) {
@@ -32,6 +34,20 @@ public class UserSessionManager {
         editor.putString(KEY_SENHA, senha);
         editor.commit();
     }
+
+    public void createLastLocation(String lat, String lng) {
+        editor.putString(KEY_LAT, lat);
+        editor.putString(KEY_LNG, lng);
+        editor.commit();
+    }
+
+    public HashMap<String, String> getLastLocation() {
+        HashMap<String, String> location = new HashMap<String, String>();
+        location.put(KEY_LAT, pref.getString(KEY_LAT, null));
+        location.put(KEY_LNG, pref.getString(KEY_LNG, null));
+        return location;
+    }
+
 
     public boolean checkLogin() {
         if (!this.isUserLoggedIn()) {
