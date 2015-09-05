@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
         }else{
-            Intent intent = new Intent(MainActivity.this, TesteLoginActivity.class);
+            Intent intent = new Intent(MainActivity.this, MapHomeActivity.class);
             startActivity(intent);
         }
         finish();

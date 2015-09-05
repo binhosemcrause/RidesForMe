@@ -27,8 +27,8 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         Button btnLogar = (Button) findViewById(R.id.button2);
-        final EditText txtLogin = (EditText) findViewById(R.id.editLogin);
-        final EditText txtPassword = (EditText) findViewById(R.id.editPassword);
+        final EditText txtLogin = (EditText) findViewById(R.id.edtLogin);
+        final EditText txtPassword = (EditText) findViewById(R.id.edtPassWord);
         TextView txtCadastrar = (TextView) findViewById(R.id.cadastrarLogin);
         txtCadastrar.setText(Html.fromHtml("<p><u>Cadastre-se agora!</u></p>"));
         session = new UserSessionManager(getApplication());
@@ -39,7 +39,7 @@ public class LoginActivity extends Activity {
                 String username = txtLogin.getText().toString();
                 String password = txtPassword.getText().toString();
                 session.createUserLoginSession(username, password);
-                Intent intent = new Intent(getApplicationContext(), TesteLoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MapHomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -55,7 +55,7 @@ public class LoginActivity extends Activity {
                     b = new LoginControllerTask().execute(username, password).get();
                     if (b == true) {
                         session.createUserLoginSession(username, password);
-                        Intent intent = new Intent(getApplicationContext(), TesteLoginActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MapHomeActivity.class);
                         startActivity(intent);
                     } else {
                         Toast.makeText(getApplication(), "login ou senha inválidos!", Toast.LENGTH_SHORT).show();

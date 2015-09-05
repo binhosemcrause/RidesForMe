@@ -35,7 +35,7 @@ public class UserSessionManager {
 
     public boolean checkLogin() {
         if (!this.isUserLoggedIn()) {
-            Intent i = new Intent(_context, TesteLoginActivity.class);
+            Intent i = new Intent(_context, MapHomeActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             _context.startActivity(i);
