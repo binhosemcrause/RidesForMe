@@ -45,13 +45,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editText3"
-        android:hint="Bairro"/>
+        android:hint="Bairro Origem"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editText4"
-        android:hint="Cidade"/>
+        android:hint="Cidade Origem"/>
 
     <TextView
         android:text="Pra onde você vai?"
@@ -87,17 +87,21 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dtyrt" />
+        android:id="@+id/dtyrt"
+        android:hint="Bairro Destino"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tyuj" />
+        android:id="@+id/tyuj"
+        android:hint="Cidade Destino"/>
 
     <Button
         android:layout_width="352dp"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button4" />
+        android:text="Confirmar"
+        android:id="@+id/button4"
+        android:textColor="#00BCD4"
+        android:background="#FFF"/>
 
 </LinearLayout>

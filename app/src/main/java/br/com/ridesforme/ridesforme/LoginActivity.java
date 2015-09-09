@@ -40,7 +40,9 @@ public class LoginActivity extends Activity {
                 String password = txtPassword.getText().toString();
                 session.createUserLoginSession(username, password);
                 Intent intent = new Intent(getApplicationContext(), MapHomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                finish();
             }
         });
 

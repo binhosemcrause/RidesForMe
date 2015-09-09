@@ -43,9 +43,15 @@
                 android:value="br.com.ridesforme.ridesforme.LoginActivity" />
         </activity>
 
+        <!-- Felipe -->
+        <!--<meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAgpnCXiiDc4R6mB4RoVTnItSrilfT1hKo" />-->
+
+        <!-- Robson -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAgpnCXiiDc4R6mB4RoVTnItSrilfT1hKo" />
+            android:value="AIzaSyA88MPBXIpK1cgGLoAnh475JYwHm5pC_S8" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

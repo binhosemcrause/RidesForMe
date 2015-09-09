@@ -1,10 +1,14 @@
 package br.com.ridesforme.ridesforme;
 
+import android.content.Intent;
 import android.location.Location;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,23 +51,17 @@ public class MapHomeActivity extends AppCompatActivity implements OnMapReadyCall
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_home);
-
         if (checkPlayServices()) {
-
             // Building the GoogleApi client
             buildGoogleApiClient();
         }
 
 
         session = new UserSessionManager(getApplicationContext());
-
         if (session.checkLogin())
             finish();
-
         HashMap<String, String> user = session.getUserDetails();
-
         String name = user.get(UserSessionManager.KEY_NAME);
-
         TextView txtLogin = (TextView) findViewById(R.id.lbllogin);
         txtLogin.setText(Html.fromHtml("Name: <b>" + name + "</b>"));
 
@@ -73,6 +71,15 @@ public class MapHomeActivity extends AppCompatActivity implements OnMapReadyCall
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+
+        Button btnCarona = (Button)findViewById(R.id.btnCarona);
+        btnCarona.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapHomeActivity.this,LocalizacaoCaronaActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -178,7 +185,6 @@ public class MapHomeActivity extends AppCompatActivity implements OnMapReadyCall
     @Override
     public void onMapReady(GoogleMap map2) {
         this.map = map2;
-
     }
 
 }
