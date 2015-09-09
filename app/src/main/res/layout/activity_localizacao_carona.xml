@@ -8,7 +8,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.ridesforme.ridesforme.LocalizacaoCaronaActivity"
     android:background="#00BCD4"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <TextView
         android:text="Onde você está?"
@@ -57,7 +58,7 @@
         android:text="Pra onde você vai?"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/dfgdfg" />
+        android:id="@+id/dfgdfg"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -96,10 +97,34 @@
         android:id="@+id/tyuj"
         android:hint="Cidade Destino"/>
 
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pegar carona"
+                android:textSize="20dp"
+                android:id="@+id/radioButton2" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Oferecer carona"
+                android:textSize="20dp"
+                android:id="@+id/radioButton" />
+
+    </RadioGroup>
+
     <Button
         android:layout_width="352dp"
         android:layout_height="wrap_content"
-        android:text="Confirmar"
+        android:text="Proximo passo"
         android:id="@+id/button4"
         android:textColor="#00BCD4"
         android:background="#FFF"/>

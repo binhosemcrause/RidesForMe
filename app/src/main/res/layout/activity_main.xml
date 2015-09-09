@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#00BCD4"
-    tools:layout="@android:layout/list_content" >
+    tools:layout="@android:layout/list_content"
+    android:id="@+id/zzzz">
 
     <ProgressBar
         android:layout_width="wrap_content"
@@ -27,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/maphome"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
