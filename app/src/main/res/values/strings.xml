@@ -17,5 +17,8 @@
     <string name="title_activity_teste_login">TesteLoginActivity</string>
     <string name="title_activity_cadastro">CadastroActivity</string>
     <string name="title_activity_index">IndexActivity</string>
+    <string name="title_activity_localizacao_carona">LocalizacaoCaronaActivity</string>
+    <string name="title_activity_perfil">Perfil</string>
+    <string name="action_edit">Editar</string>
     <string name="title_activity_localizacao_carona">Passo 1</string>
 </resources>
