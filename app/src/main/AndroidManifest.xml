@@ -17,6 +17,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.NoActionBar" >
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -35,6 +36,10 @@
             android:label="@string/title_activity_teste_login" >
         </activity>
         <activity
+            android:name=".ContatoActivity"
+            android:label="@string/title_activity_contato" >
+        </activity>
+        <activity
             android:name=".CadastroActivity"
             android:label="@string/title_activity_cadastro"
             android:parentActivityName=".LoginActivity" >
@@ -44,25 +49,32 @@
         </activity>
 
         <!-- Felipe -->
-        <!--<meta-data
+        <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAgpnCXiiDc4R6mB4RoVTnItSrilfT1hKo" />-->
+            android:value="AIzaSyAgpnCXiiDc4R6mB4RoVTnItSrilfT1hKo" />
 
-        <!-- Robson -->
+        <!--
+        Robson
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA88MPBXIpK1cgGLoAnh475JYwHm5pC_S8" />
+        -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".LocalizacaoCaronaActivity"
+            android:name=".CaronaPasso1Activity"
             android:label="@string/title_activity_localizacao_carona"
-            android:parentActivityName=".MapHomeActivity" >
+            android:parentActivityName=".MapHomeActivity"
+            android:theme="@style/Theme.AppCompat" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MapHomeActivity" />
+        </activity>
+        <activity
+            android:name=".CaronaPasso2Activity"
+            android:label="@string/title_activity_carona_passo2" >
         </activity>
     </application>
 

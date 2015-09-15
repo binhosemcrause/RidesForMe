@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="br.com.ridesforme.ridesforme.LocalizacaoCaronaActivity"
+    tools:context="br.com.ridesforme.ridesforme.CaronaPasso1Activity"
     android:background="#00BCD4"
     android:orientation="vertical"
     android:weightSum="1">
@@ -45,7 +45,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText3"
+        android:id="@+id/txtBairroOrigem"
         android:hint="Bairro Origem"/>
 
     <EditText
@@ -72,14 +72,14 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/asas"
+            android:id="@+id/txtRuaDestino"
             android:layout_weight="5"
             android:hint="Rua"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/sadfsd"
+            android:id="@+id/txtNumeroDestino"
             android:layout_weight="1"
             android:hint="Nº"/>
 
@@ -88,13 +88,13 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dtyrt"
+        android:id="@+id/txtBairroDestino"
         android:hint="Bairro Destino"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tyuj"
+        android:id="@+id/txtCidadeDestino"
         android:hint="Cidade Destino"/>
 
     <RadioGroup

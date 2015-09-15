@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -35,7 +33,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 
 //implentar logica abaixo na tela inicial
@@ -51,7 +48,6 @@ public class MapHomeActivity extends AppCompatActivity implements OnMapReadyCall
     private String pEndereco;
     private String pNumero;
     private String pCidade;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +84,7 @@ public class MapHomeActivity extends AppCompatActivity implements OnMapReadyCall
                 b.putString("endereco",pEndereco);
                 b.putString("numero",pNumero);
                 b.putString("cidade",pCidade);
-                Intent intent = new Intent(MapHomeActivity.this,LocalizacaoCaronaActivity.class);
+                Intent intent = new Intent(MapHomeActivity.this,CaronaPasso1Activity.class);
                 intent.putExtras(b);
                 startActivity(intent);
             }
@@ -150,7 +146,7 @@ public class MapHomeActivity extends AppCompatActivity implements OnMapReadyCall
 
         map.getUiSettings().setZoomControlsEnabled(true);
         map.getUiSettings().setCompassEnabled(true);
-        map.setMyLocationEnabled(false);
+        map.setMyLocationEnabled(true);
         map.setOnMarkerDragListener(this);
 
         LatLng myLocation;
@@ -266,6 +262,9 @@ public class MapHomeActivity extends AppCompatActivity implements OnMapReadyCall
             Geocoder geocoder = new Geocoder(this, Locale.getDefault());
             List<Address> addresses = geocoder.getFromLocation(marker.getPosition().latitude, marker.getPosition().longitude, 1);
             endereco.setText(addresses.get(0).getAddressLine(0).toString());
+            pEndereco = addresses.get(0).getThoroughfare().toString();
+            pNumero =  addresses.get(0).getFeatureName();
+            pCidade =  addresses.get(0).getLocality();
             Log.i("endereco", addresses.get(0).getAddressLine(0).toString());
             Toast.makeText(MapHomeActivity.this, "movido", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {

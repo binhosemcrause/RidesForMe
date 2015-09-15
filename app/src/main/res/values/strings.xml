@@ -17,8 +17,22 @@
     <string name="title_activity_teste_login">TesteLoginActivity</string>
     <string name="title_activity_cadastro">CadastroActivity</string>
     <string name="title_activity_index">IndexActivity</string>
-    <string name="title_activity_localizacao_carona">LocalizacaoCaronaActivity</string>
     <string name="title_activity_perfil">Perfil</string>
     <string name="action_edit">Editar</string>
     <string name="title_activity_localizacao_carona">Passo 1</string>
+    <string name="title_activity_contato">Contato</string>
+    <string name="nome_contato">Nome</string>
+    <string name="email_contato"></string>
+    <string name="mensagem_contato">Mensagem</string>
+    <string name="tipo_contato">Tipo</string>
+    <string name="sugestao">Sugestão</string>
+    <string name="problema">Problema</string>
+    <string name="nota_app">Nota do RidesForMe</string>
+    <string name="alert_campo_obrigatorio">Campo Obrigatório</string>
+    <string name="alert_radioButtonEmpty">Selecione alguma opção para o Tipo do Contato.</string>
+    <string name="alert_warning">Por favor selecione uma das opções para o Tipo de Contato.</string>
+    <string name="email_success">Caro Usuário, os seus dados foram computados com sucesso, um e-mail automático foi enviado, por favor verifique a sua caixa de entrada.</string>
+    <string name="btn_enviar_email_contato">Enviar</string>
+    <string name="entrar_contato">Contato</string>
+    <string name="title_activity_carona_passo2">CaronaPasso2Activity</string>
 </resources>
